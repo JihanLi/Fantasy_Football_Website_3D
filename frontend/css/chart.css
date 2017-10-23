@@ -1,0 +1,90 @@
+svg {
+  font-family: "Helvetica Neue", Helvetica;
+}
+
+.cirs
+{
+    cursor: pointer;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis, .axis2
+{
+    font-size: 5px;
+}
+
+.bar, .barCurrent {
+  fill: orange;
+}
+
+.barCurrent:hover {
+  fill: orangered;
+  cursor:pointer;
+}
+
+#tips{
+    position: absolute;
+    line-height: 1;
+    font-weight: bold;
+    display:none;
+    padding: 1px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 0.1em;
+    width:80px;
+    height:55px;
+    z-index: 3;
+}
+
+#tips:hover
+{
+    cursor:pointer;	
+}
+
+#tips:after {
+    box-sizing: border-box;
+    display: inline;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    top: 55px;
+}
+
+#axisX text { display: none; }
+
+.axis2 path, .axis2 line {
+    fill: none;
+    stroke: white;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+} 
+
+#textLabel
+{
+    position:absolute;
+    top: 40px;
+    left: 200px;
+    font-family:Verdana, Geneva, sans-serif;
+    font-size:8px; 
+    font-weight: 700;
+}
+
+#amount
+{
+    position:absolute;
+    top: 39px;
+    left: 240px;
+    font-size: 8px;
+    background: rgba(255, 255, 255, 0);
+}

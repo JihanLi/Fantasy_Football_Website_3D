@@ -1,0 +1,76 @@
+104266592953439_1048612791852143/likes?summary=true
+104266592953439_1048612791852143_1048634035183352?fields=like_count
+104266592953439/posts
+me?fields=gender
+
+"/"+handle+"?fields=name,likes,posts.fields(name,created_time,comments.summary(true),likes.summary(true).fields(name),shares,link).limit(100)"
+
+oauth/access_token?client_id= 464303120407231&client_secret=43569b34becf72c03ca4f749d9bd6fca&grant_type=client_credentials
+
+
+//Topic Search API
+/search?type=topic&q=Tom Brady
+
+//Topic Feed API
+dG9waWNfMjE0MDAzMjc1MzA3NDk3?fields=id,name,ranked_posts.fields(message,likes,comments,created_time,message_tags,link,picture,from.fields(name,category),to.fields(name,category))
+
+//Topic Insights API
+//Date Range not Working
+topic_insights?contains_all[]=dG9waWNfMjE0MDAzMjc1MzA3NDk3&since=Aug 02, 2015 00:00:00 GMT&until=Aug 03, 2015 00:00:00 GMT&fields=mentions.country(US).continent(north_america).breakdown_by(["age_range","gender"])
+
+//Hashtag API
+hashtag_counts?hashtags[]=nfl&since=Aug 02, 2015 00:00:00 GMT
+
+//Trend API
+trends?country=US&fields=topics,headline,categories,photo_icon
+
+
+
+mongoimport --host MongoAWS-2.testdeploymongo.2788.mongodbdns.com:27000 --authenticationDatabase=admin -u 'jihanli' -p 'j123' --db visualization --collection players --file /Users/liji/Desktop/website3D_3/frontend/data/data.json
+mongoimport --host MongoAWS-2.testdeploymongo.2788.mongodbdns.com:27000 --authenticationDatabase=admin -u 'jihanli' -p 'j123' --db visualization --collection bars --type csv --headerline --file /Users/liji/Desktop/website3D_3/frontend/data/newbar.csv
+
+window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+                          
+function onInitFs(fs) {
+  fs.root.getFile(content.name+'.txt', {create: true}, function(fileEntry) {
+    fileEntry.createWriter(function(fileWriter) {
+      fileWriter.onwriteend = function(e) {
+        console.log('Write completed.');
+      };
+      fileWriter.onerror = function(e) {
+        console.log('Write failed: ' + e.toString());
+      };
+
+      var blob = new Blob([content], {type: 'text/plain'});
+      fileWriter.write(blob);
+    }, errorHandler);
+  }, errorHandler);
+}
+
+function errorHandler(e) {
+  var msg = '';
+
+  switch (e.code) {
+    case FileError.QUOTA_EXCEEDED_ERR:
+      msg = 'QUOTA_EXCEEDED_ERR';
+      break;
+    case FileError.NOT_FOUND_ERR:
+      msg = 'NOT_FOUND_ERR';
+      break;
+    case FileError.SECURITY_ERR:
+      msg = 'SECURITY_ERR';
+      break;
+    case FileError.INVALID_MODIFICATION_ERR:
+      msg = 'INVALID_MODIFICATION_ERR';
+      break;
+    case FileError.INVALID_STATE_ERR:
+      msg = 'INVALID_STATE_ERR';
+      break;
+    default:
+      msg = 'Unknown Error';
+      break;
+  };
+
+  console.log('Error: ' + msg);
+}
+window.requestFileSystem(window.TEMPORARY, 1024*1024, onInitFs, errorHandler);

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script type="text/javascript" src="jquery.js"></script>
+    <body>
+        <script>
+        var handles = ["espnfantasy", "NFLonESPN", "MatthewBerryTMR", "NFL", "nflf247", "FFLNFL", "NFLFantasyLIVE", "NFLFantasyFootballRankings", "CBSSportsFantasyFootball", "CBSSportsFantasy", "Draft-Kings", "bleacherreport", "NBCSports",    "baltimoreravens", "bengals", "clevelandbrowns", "steelers", "HoustonTexans", "colts", "jacksonvillejaguars", "titans", "BuffaloBills", "MiamiDolphins", "newenglandpatriots", "Jets", "DenverBroncos", "KansasCityChiefs", "Raiders", "chargers", "ChicagoBears", "DetroitLions", "Packers", "minnesotavikings", "atlantafalcons", "CarolinaPanthers", "neworleanssaints", "tampabaybuccaneers", "DallasCowboys", "newyorkgiants", "philadelphiaeagles", "redskins", "arizonacardinals", "SANFRANCISCO49ERS", "Seahawks", "Rams"];
+        window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '1623951207888673',
+              xfbml      : true,
+              version    : 'v2.4'
+            });
+
+            FB.login(
+               function(response) {
+                   if (response.authResponse) {
+                     console.log('Welcome!  Fetching your information.... ');
+                       for(var i = 0; i < handles.length; i++)
+                       {
+                          getProfiles(handles[i]); 
+                       }
+                   } else {
+                     console.log('User cancelled login or did not fully authorize.');
+                   }
+                }
+            );
+        };
+
+        (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "https://connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+            
+            function getProfiles(handle)
+            {
+                FB.api(
+                    "/"+handle+"?fields=name,likes,posts.fields(name,created_time,comments.summary(true),likes.summary(true).fields(name),shares,link).limit(100)",
+                    function (response) {
+                      if (response && !response.error) {
+                          var content = response;
+                          var pagePosts = content.posts;
+                          var postData = pagePosts.data;
+                          content.lastPost = new Date(postData[0].created_time);
+                          content.firstPost = new Date(postData[postData.length-1].created_time);
+                          var url = 'data:text/json;charset=utf8,' + encodeURIComponent(JSON.stringify(content));
+                          $('<p><a href="' + url + '" download="'+handle+'.json">'+content.name+'</a></p>').appendTo('#data');
+                          
+                          /*
+                          var pageName = content.name;
+                          var pageLike = content.likes;
+                          var pagePosts = content.posts;
+
+                          for(var j = 0; j < pagePosts.data.length; j++)
+                          {
+                              var aPost = pagePosts.data[j];
+                              var aPostCreatedTime = aPost.created_time;
+                              var aPostLikes = aPost.likes;
+                              var aPostShares = aPost.shares;
+                              var aPostComments = aPost.comments;
+                              var aPostLinks = aPost.link;
+                              for(var k = 0; k < aPostLikes.data.length; k++)
+                              {
+                                  var aPostALike = aPostLikes.data[k];
+                                  aPostALike.favorite_athletes = ;
+                                  aPostALike.favorite_teams = ;
+                              }
+                              for(var k = 0; k < aPostComments.data.length; k++)
+                              {
+                                  var aPostAComment = aPostComments.data[k];
+                                  aPostAComment.favorite_athletes = ;
+                                  aPostAComment.favorite_teams = ;
+                              }
+                          }
+                          console.log(content);
+                        
+                          $("#data").append("<p>"+content+"</p>");
+                          */
+                      }
+                    }
+                );
+            }
+        </script>
+        <p id="data"></p>
+    </body>
+</html>

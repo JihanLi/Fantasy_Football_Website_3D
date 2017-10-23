@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>
+            Fantasy Football Drafting
+        </title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/player.css">
+        <link rel="stylesheet" href="css/chart.css">
+        <link rel="stylesheet" href="css/table.css">
+        <link rel="stylesheet" href="css/table2.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		
+        <script type="text/javascript" src="js/basic/massrel.js"></script>
+        <script type="text/javascript" src="js/jquery/jquery.js"></script>
+        <script src="js/3d/three.min.js"></script>
+		<script src="js/3d/js/Detector.js"></script>
+		<script src="js/3d/js/controls/OrbitControls.js"></script>
+		<script src="js/3d/js/loaders/DDSLoader.js"></script>
+		<script src="js/3d/js/loaders/MTLLoader.js"></script>
+		<script src="js/3d/js/loaders/OBJMTLLoader.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	</head>
+	<body>
+        <nav>
+            <div id="hidden-container">
+                <div id="logo-container">
+                    <a href="team.html" id="menuIcon">
+                        <img id="logo" src="source/logo-espn.png" border="0" alt="Link to this page">
+                    </a>
+                </div>
+            </div>
+            <div><img id="titles" src="source/title.png" border="0" alt="Link to this page"></div>
+            <ul>	
+                <li class="col">
+                    <a href="team.html">My Team</a>
+                </li>
+                <li class="col">
+                    <a href="position.html">Position</a>
+                </li>
+                <li class="col-current">
+                    <a href="#">Player</a>
+                </li>
+            </ul>
+            <div id="searchBar">
+                <input type="text" id="search" class="textInput" placeholder="Search a Player" size="21" maxlength="120">
+                <img src="source/search.png" onmouseover="this.src='source/search_hover.png'" onmouseout="this.src='source/search.png'" type="image" class="searchButton"></img>
+            </div>
+        </nav>
+        <div id="mainBody">
+            <div id="container">
+                <div class="tweets">Ranking-Related Tweets
+                    <a class="left" id="rankL" ><</a>
+                    <span class="pageNum" id="rankPage"></span>
+                    <a class="right" id="rankR">></a>
+                </div>
+                <div id="stream1"></div>
+                <div class="tweets">News-Related Tweets
+                    <a class="left" id="newsL"><</a>
+                    <span class="pageNum" id="newsPage"></span>
+                    <a class="right" id="newsR">></a>
+                </div>
+                <div id="stream2"></div>
+            </div>
+            <div id="low-half">
+            	<div id="data-zone">
+            		<div id="playerImg"></div>
+                </div>
+                <div id="table-zone">
+                    <table id="playerInfo">
+                        <tr><td class="basicTopic">Name</td><td class="basicData" id="playerName"></td></tr>
+                        <tr><td class="basicTopic">Rank</td><td class="basicData" id="playerRank"></td></tr>
+                        <tr><td class="basicTopic">Value</td><td class="basicData" id="playerValue"></td></tr>
+                        <tr><td class="basicTopic">Risk</td><td class="basicData" id="playerRisk"></td></tr>
+                        <tr><td class="basicTopic">Sentiment</td><td class="basicData" id="playerSent"></td></tr>
+                    </table>
+                </div>
+                <div id="chart-zone">
+                    <div id="pad">
+                        <p id="chart-title">Social Sentiment Analysis</p>
+                        <div id="pan"></div>
+                        <div id="viz"></div>
+                        <div id="tips"></div>
+                        <p>
+                        <label id="textLabel" for="amount">Range:</label>
+                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                        </p>
+                    </div>
+                    <div id="slider-range"></div>
+                </div>
+            </div>
+            <div id="right-half">
+                <div id="rank-zone">
+                    <select id="group">
+                        <option value="All">All</option>
+                        <option value="RB">RB</option>
+                        <option value="WR">WR</option>
+                        <option value="RB/WR">RB/WR</option>
+                        <option value="QB">QB</option>
+                        <option value="TE">TE</option>
+                        <option value="K">K</option>
+                    </select>
+                    <table class="rankTable">
+                        <thead>
+                            <tr>
+                                <th>Player</th>
+                                <th>Position</th>
+                                <th>Rank</th>
+                                <th>Value</th>
+                                <th>Risk</th>
+                                <th>Sentiment</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+		
+
+        <script src="js/basic/basic2.js"></script>
+        <script src="js/basic/3d/player.js"></script>
+        <script src="js/basic/d3/chart.js"></script>
+
+	</body>
+</html>

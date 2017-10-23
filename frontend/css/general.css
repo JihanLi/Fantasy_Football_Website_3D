@@ -1,0 +1,719 @@
+html {
+    font-family: "microsoft yahei",arial;
+    font-size: 100%;
+}
+
+body {
+    z-index:0;
+    margin: 0;
+    background-color: #fff;
+    overflow:hidden;
+}
+
+li {
+    list-style: none;
+}
+
+nav {
+		z-index:2;
+		position: fixed;
+		width: 100%;
+		height: 50px;
+    background: -webkit-linear-gradient(top, #1C1C1C 0%, #585858 100%);
+}
+
+#hidden-container
+{
+	position: fixed;
+	left: -10px;
+	width: 130px;
+	height: 50px;
+	background-color: #DF0101;
+	margin-right: 80px;
+}
+
+#logo-container
+{
+	position: fixed;
+	left: 10px;
+	width: 130px;
+	height: 50px;
+	background-color: #DF0101;
+	border-right: 1em solid #B40404;
+	-webkit-transform: skew(-30deg,0deg);
+  -moz-transform: skew(-30deg,0deg);
+  -ms-transform: skew(-30deg,0deg);
+  -o-transform: skew(-30deg,0deg);
+  transform: skew(-30deg,0deg); 
+}
+
+#logo
+{
+	position: fixed;
+	left: 15px;
+	top: 13px;
+	width:90px;
+	z-index:2;
+  -webkit-transform: skew(30deg,0deg);
+  -moz-transform: skew(30deg,0deg);
+  -ms-transform: skew(30deg,0deg);
+  -o-transform: skew(30deg,0deg);
+  transform: skew(30deg,0deg); 
+}
+
+#titles
+{
+    position: fixed;
+	left: 200px;
+	top: 1px;
+	width:400px;
+    z-index:2;
+}
+
+nav ul
+{
+	position: fixed;
+	left: 600px;
+	top: -16px;
+	width:100%;
+}
+
+nav li {
+  	vertical-align:middle;
+  	text-align: center;
+  	width: 80px;
+  	height: 50px;
+  	line-height:50px;
+    display: inline-block;
+  	font-family:Arial, Geneva, sans-serif;
+    font-weight: 700;
+  	font-size: 0.8em;
+}
+
+nav li a
+{
+    text-decoration: none;
+    width: 80px;
+    display: inline-block;
+}
+
+.col-current a
+{
+		color: #F7FE2E;
+}
+
+.col a
+{
+	  color:#FAFAFA;
+		-webkit-transition: all .3s;
+	  -moz-transition: all .3s;
+	  -ms-transition: all .3s;
+	  -o-transition: all .3s;
+	  transition: all .3s;
+}
+
+.col:hover a,#menuIcon:hover {
+    color: #F4FA58;
+}
+
+.col:hover, .col-current:hover
+{
+    background-color: rgba(100, 100, 100, 0.8);
+    border-radius: 3px;
+}
+    
+#searchBar
+{
+	position: relative;
+	left: -10px;
+	float:right;
+}
+
+.textInput
+{
+    background: none repeat scroll 0 0 #fafafa;
+    border: 1px solid #eeeeee;
+    color: #5e5e5e;
+    font-family: arial, sans-serif;
+    font-size: inherit;
+    padding: 10px;
+    width: 200px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin: 0;
+    height: 30px;
+    overflow: hidden;
+}
+
+.searchButton 
+{
+	position:relative;
+	top: 10px;
+	left: -5px;
+	background: none repeat scroll 0 0 #A4A4A4;
+	font-family: inherit;
+	font-size: 20px;
+	padding: 5px;
+	text-align: center;
+	width: 30px;
+	height: 30px;
+	box-sizing: border-box;
+    cursor: pointer;
+}
+
+.searchButton:hover
+{
+	background: none repeat scroll 0 0 #D8D8D8;
+}
+
+@media screen and (max-width: 1140px) {
+	#hidden-container
+	{
+		margin-right:80%;
+	}
+	
+	nav {
+		height: 100px;
+	}
+
+	nav ul
+	{
+		position: relative;
+		left: -20px;
+		top: 34px;
+	}
+	#searchBar
+	{
+		position: relative;
+		top: -32px;
+	}
+}
+
+@media screen and (max-width: 520px) {
+	#searchBar
+	{
+		display:none;
+	}
+}
+
+@media screen and (max-width: 248px) {
+	nav {
+		height: 150px;
+	}
+}
+
+@media screen and (max-width: 164px) {
+	nav {
+		height: 200px;
+	}
+}
+
+#mainBody
+{
+    height: 800px;
+}
+
+#container {
+    position: absolute;
+    top: 0;
+    width: 70%;
+    height: 100%;
+    background-color: white;
+    overflow-x: hidden; 
+    overflow-y: hidden;
+}
+
+#infoPanel
+{
+    position:absolute;
+    top: 60px;
+    width: 162.5px;
+    height: 130px;
+    border-radius: 5px;
+    z-index: 3;
+    background: rgba(0,0,0,0.5);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+#cv
+{
+    position:absolute;
+    left: 10%;
+    top: 30px;
+    width: 130px;
+    height: 40px;
+}
+
+#smallPanel
+{
+    position:absolute;
+    top: 60px;
+    left: 10px;
+    width: 162.5px;
+    height: 309px;
+    z-index: 3;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+#smallPanel img
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.node2
+{
+    cursor:pointer;
+}
+
+#selclr
+{
+    position:absolute;
+    top: 60px;
+    left: 10px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+#allclr
+{
+    position:absolute;
+    top: 60px;
+    left: 120px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+#low-half
+{
+    position: absolute;
+    top: 68.5%;
+    width: 100%;
+    height: 33%;
+    visibility: hidden;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
+}
+
+#chart-zone
+{
+    position: absolute;
+    height: 96%;
+    background: rgba(255,255,255,0.8);
+    visibility: hidden;
+}
+
+#pad
+{
+    position: relative;
+    top:5%;
+    left: 2%;
+    width: 95%;
+    height: 93%;
+    text-align: center;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#chart-title
+{
+    position: relative;
+    top:-5px;
+    font:bold .8em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+    color: black;
+}
+
+#pan
+{
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    width: 170px;
+    height: 110px;
+}
+
+#viz
+{
+    position: absolute;
+    top: 20px;
+    left: 160px;
+    width: 50%;
+    height: 90%;
+}
+
+#slider-range
+{
+    position:absolute;
+    top: 85%;
+    left: 7.5%;
+    width: 85%;
+    height:5px;
+}
+
+#slider-range .ui-slider-handle { height: 15px; }
+
+#data-zone
+{
+    position: absolute;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background-size: 100% 100%, 10px 10px, 10px 10px, 100% 100%;
+    background-repeat: no-repeat, repeat, repeat, no-repeat;
+    background-position: top center, 1px 1px, 0px 0px, top center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    visibility: hidden;
+}
+
+#playerImg
+{
+    position: absolute;
+    left: 25%;
+    top: 20px;
+    width: 120px;
+    height: 300px;
+    z-index: 3;
+    border-radius: 5px;
+}
+
+#rect1
+{
+    position: absolute;
+    left: 63%;
+    top: 10px;
+    width:30px;
+    height:105px;
+    background: rgba(254,62,62,0.8);
+    z-index: 1;
+    -webkit-transform: skew(20deg);
+    -moz-transform: skew(20deg);
+    -o-transform: skew(20deg);
+}
+
+#rect2
+{
+    position: absolute;
+    left: 26%;
+    top: 15px;
+    width:110px;
+    height:100px;
+    background: -webkit-radial-gradient(center, circle farthest-corner, rgba(250,250,250,0.7), rgba(243,247,129,0.5));
+    z-index: 2;
+    -webkit-transform: skew(20deg);
+    -moz-transform: skew(20deg);
+    -o-transform: skew(20deg);
+}
+
+#rect3
+{
+    position: absolute;
+    left: 23%;
+    top: 85px;
+    width:30px;
+    height:40px;
+    background: rgba(132,132,132,0.8);
+    z-index: 4;
+    -webkit-transform: skew(20deg);
+    -moz-transform: skew(20deg);
+    -o-transform: skew(20deg);
+}
+
+#rect4
+{
+    position: absolute;
+    left: 20%;
+    top: 105px;
+    width:150px;
+    height:30px;
+    background: black;
+    z-index: 5;
+    -webkit-transform: skew(20deg);
+    -moz-transform: skew(20deg);
+    -o-transform: skew(20deg);
+}
+
+#teamLogo
+{
+    position: absolute;
+    left: 68%;
+    top: 20px;
+    width:35px;
+    height:32px;
+    z-index: 4;
+}
+
+#playerName
+{
+    position: absolute;
+    left: 30%;
+    top: 100px;
+    text-align:center;
+    z-index: 6;
+    font:bold italic 0.8em Arial,sans-serif;
+    color:white;
+    padding-bottom: 5px;
+}
+
+#playerInfo
+{
+    position: absolute;
+    left: 15px;
+    top: 140px;
+    width: 220px;
+    height: 65px;
+    z-index: 2;
+}
+
+#rect5
+{
+    position: absolute;
+    left: 10px;
+    top: 140px;
+    width:220px;
+    height:30px;
+    background: -webkit-linear-gradient(top, #1C1C1C 0%, #585858 100%);
+    -webkit-transform: skew(-10deg);
+    -moz-transform: skew(-10deg);
+    -o-transform: skew(-10deg);
+    z-index: 1;
+}
+
+#rect6
+{
+    position: absolute;
+    left: 20px;
+    top: 140px;
+    width:220px;
+    height:30px;
+    background: -webkit-linear-gradient(top, #1C1C1C 0%, #585858 100%);
+    -webkit-transform: skew(10deg);
+    -moz-transform: skew(10deg);
+    -o-transform: skew(10deg);
+    z-index: 1;
+}
+
+#rect7
+{
+    position: absolute;
+    left: 10px;
+    top: 170px;
+    width:220px;
+    height:30px;
+    background: -webkit-linear-gradient(top, #BDBDBD 0%, #F2F2F2 100%);
+    -webkit-transform: skew(10deg);
+    -moz-transform: skew(10deg);
+    -o-transform: skew(10deg);
+    z-index: 1;
+}
+
+#rect8
+{
+    position: absolute;
+    left: 20px;
+    top: 170px;
+    width:220px;
+    height:30px;
+    background: -webkit-linear-gradient(top, #BDBDBD 0%, #F2F2F2 100%);
+    -webkit-transform: skew(-10deg);
+    -moz-transform: skew(-10deg);
+    -o-transform: skew(-10deg);
+    z-index: 1;
+}
+
+.basicTopic
+{
+    width: 100px;
+    height: 10px;
+    text-align:center;
+    font:bold .7em "Century Gothic","Trebuchet MS",Arial,Helvetica,sans-serif;
+    color:white;
+    visibility: hidden;
+}
+
+.basicData
+{
+    color: black;
+    width: 100px;
+    height: 10px;
+    font: .7em Arial,sans-serif;
+    text-align:center;	
+}
+
+#right-half {
+    position: absolute;
+    top: 0;
+    left: 70%;
+    width: 30%;
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+    background: rgba(104, 104, 104, 0.5);
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-transition: all 0.5s ease-in-out 0s;
+    -moz-transition: all 0.5s ease-in-out 0s;
+    -ms-transition: all 0.5s ease-in-out 0s;
+    -o-transition: all 0.5s ease-in-out 0s;
+    transition: all 0.5s ease-in-out 0s;
+}
+
+#rank-zone
+{
+    position:absolute;
+	top: 60px;
+	left: 5px;
+}
+
+@media screen and (max-width: 1140px) 
+{
+    #rank-zone
+    {
+        position:absolute;
+        top: 110px;
+    }
+    
+    #smallPanel
+    {
+        position:absolute;
+        top: 110px;
+        left: 10px;
+    }
+    
+    #infoPanel
+    {
+        position:absolute;
+        top: 110px;
+    }
+    
+    #selclr
+    {
+        position:absolute;
+        top: 110px;
+        left: 10px;
+    }
+
+    #allclr
+    {
+        position:absolute;
+        top: 110px;
+        left: 120px;
+    }
+}
+
+@media only screen and (max-width : 650px) 
+{
+    #container
+    {
+        width: 100%;
+    }
+    
+    #right-half 
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 248px) {
+	#smallPanel
+    {
+        position:absolute;
+        top: 160px;
+        left: 10px;
+    }
+    
+    #infoPanel
+    {
+        position:absolute;
+        top: 160px;
+    }
+    
+    #selclr
+    {
+        position:absolute;
+        top: 160px;
+        left: 10px;
+    }
+
+    #allclr
+    {
+        position:absolute;
+        top: 190px;
+        left: 10px;
+    }
+}
+
+@media screen and (max-width: 164px) {
+	#selclr
+    {
+        position:absolute;
+        top: 210px;
+        left: 10px;
+    }
+
+    #allclr
+    {
+        position:absolute;
+        top: 240px;
+        left: 10px;
+    }
+    
+    #smallPanel
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    #infoPanel
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-height : 650px) 
+{
+    #smallPanel
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@media only screen and (max-height : 400px) 
+{
+    #container
+    {
+       width: 100%;
+       height: 100%;
+    }
+    
+    #right-half 
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    #infoPanel
+    {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

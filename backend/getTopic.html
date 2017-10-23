@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script type="text/javascript" src="jquery.js"></script>
+    <body>
+        <script>
+        var handles = ["espn", "NFL", "fantasy football", "CBS", "Draft-Kings", "NBC",    "Baltimore Ravens", "Cincinnati Bengals", "Cleveland Browns", "Pittsburgh Steelers", "Houston Texans", "Indianapolis Colts", "Jacksonville Jaguars", "Tennessee Titans", "Buffalo Bills", "Miami Dolphins", "New England Patriots", "New York Jets", "Denver Broncos", "Kansas City Chiefs", "Oakland Raiders", "San Diego Chargers", "Chicago Bears", "Detroit Lions", "Green Bay Packers", "Minnesota Vikings", "Atlanta Falcons", "Carolina Panthers", "New Orleans Saints", "Tampa Bay Buccaneers", "Dallas Cowboys", "New York Giants", "Philadelphia Eagles", "Washington Redskins", "Arizona Cardinals", "San Francisco 49ers", "Seattle Seahawks", "St. Louis Rams"];
+        window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '464303120407231',
+              status     : true,
+              xfbml      : true,
+              version    : 'v2.4'
+            });
+
+            FB.login(
+               function(response) {
+                   if (response.authResponse) {
+                       console.log('Welcome!  Fetching your information.... ');
+                       for(var i = 0; i < handles.length; i++)
+                       {
+                          getTopicId(handles[i]); 
+                       }
+                   } else {
+                     console.log('User cancelled login or did not fully authorize.');
+                   }
+                }
+            );
+        };
+
+        (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "https://connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+            
+            function getTopicId(handle)
+            {
+                FB.api(
+                    "/search?type=topic&q="+handle,
+                    {
+                      access_token : "464303120407231|F7-lEAC3rNqM1U5C1_ThhRi6Q2E"
+                    },
+                    function (response) {
+                      if (response && !response.error) {
+                          var content = response.data[0].id;
+                          getQuery(content);
+                      }
+                    }
+                );
+            }
+            
+            function getQuery(topic)
+            {
+                FB.api(
+                    "/"+topic+"?fields=id,name,ranked_posts.fields(message,likes,comments,created_time,message_tags,link,picture,from.fields(name),to.fields(name))",
+                    {
+                      access_token : "464303120407231|F7-lEAC3rNqM1U5C1_ThhRi6Q2E"
+                    },
+                    function (response) {
+                      if (response && !response.error) {
+                          var content = response;
+                          var url = 'data:text/json;charset=utf8,' + encodeURIComponent(JSON.stringify(content));
+                          $('<p><a href="' + url + '" download="'+content.name+'.json">'+content.name+'</a></p>').appendTo('#data');
+                      }
+                        else
+                        {
+                            console.log(response.error);
+                        }
+                    }
+                );
+            }
+        </script>
+        <p id="data"></p>
+    </body>
+</html>

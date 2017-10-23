@@ -1,0 +1,115 @@
+.tweets {
+    position:relative;
+    top: 50px;
+    background: #1C1C1C;
+    width: 100%;
+    font-size: .8em;
+    padding-top: 6px;
+    padding-left: 10px;
+    padding-bottom: 6px;
+    color: white;
+}
+
+.left, .right
+{
+    text-decoration:none;
+    color: #A4A4A4;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+
+.left
+{
+    position:absolute;
+    left:90%;
+}
+
+.pageNum
+{
+    color:white;
+    position:absolute;
+    left:92.6%;
+    vertical-align: middle;
+    line-height: 15px;
+    font-size: .8em;
+}
+
+.right
+{
+    position:absolute;
+    left:95%;
+}
+
+.left:hover, .right:hover
+{
+    color: white;
+    cursor: pointer;
+}
+
+#stream1, #stream2 {
+    position:relative;
+    top: 50px;
+    width: 100%;
+    height: 34%;
+    overflow-y:auto;
+    overflow-x: auto;
+}
+
+.status {
+  min-height: 48px;
+  margin: 0;
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+}
+
+.avatar {
+  float: left;
+}
+.avatar img {
+  width: 48px;
+  height: 48px;
+}
+
+.text {
+  margin: 0 0 0 58px;
+  padding: 0;
+}
+
+@media screen and (max-width: 1140px) {
+	.tweets {
+        position:relative;
+        top: 100px;
+    }
+    
+    #stream1, #stream2 {
+        position:relative;
+        top: 100px;
+    }
+}
+
+@media screen and (max-width: 248px) {
+	.tweets {
+        position:relative;
+        top: 150px;
+    }
+    
+    #stream1, #stream2 {
+        position:relative;
+        top: 150px;
+    }
+}
+
+@media screen and (max-width: 164px) {
+	.tweets {
+        position:relative;
+        top: 200px;
+    }
+    
+    #stream1, #stream2 {
+        position:relative;
+        top: 200px;
+    }
+}
